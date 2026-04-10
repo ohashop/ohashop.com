@@ -1,8 +1,16 @@
+
+
+
+
+
 body {
   background: var(--light);
   font-family: 'Segoe UI', sans-serif;
 }
-
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
 /* Product Card */
 .product-card .card {
   border-radius: 12px;
