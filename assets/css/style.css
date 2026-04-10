@@ -1,0 +1,31 @@
+body {
+  background: var(--light);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Product Card */
+.product-card .card {
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.product-card .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.btn-success {
+  background: var(--primary);
+  border: none;
+}
+
+.btn-warning {
+  background: var(--accent);
+  border: none;
+}
+
+/* Section spacing */
+.section {
+  padding: 40px 0;
+}
