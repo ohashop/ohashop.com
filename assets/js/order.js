@@ -49,7 +49,8 @@ function placeOrder() {
   });
 
   // 📊 GOOGLE SHEET SAVE
-  fetch("https://script.google.com/macros/s/AKfycbx9suZTdndyUtw_mQKyom1P0gbk-NoVelIliqtvTdYVBNh0jxgBr3UbUKREpBsomeWQ/exec", {
+  
+  fetch("https://script.google.com/macros/s/AKfycbxMzIweDQMnfCUVj1dlYZ46XdztVZoU7jP3sp8MJjwhBKe9Dj4p6HLyRvwbUASxWBeN/exec", {
     method: "POST",
     body: JSON.stringify(data)
   });
