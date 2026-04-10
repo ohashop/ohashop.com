@@ -16,8 +16,7 @@ function placeOrder() {
     return;
   }
 
-  let location = document.getElementById("location").value;
-  let delivery = parseInt(location);
+  let delivery = parseInt(document.getElementById("location").value);
 
   let orderText = "";
   let total = 0;
@@ -34,12 +33,13 @@ function placeOrder() {
     phone: phone,
     address: address,
     order: orderText,
-    total: total,
     delivery: delivery,
-    source: "Cart Order"
+    total: total,
+    source: "Cart Order",
+    date: new Date().toLocaleString()
   };
 
-  // 📧 EMAIL (FormSubmit AJAX)
+  // 📧 EMAIL SEND
   fetch("https://formsubmit.co/ajax/ohashop247@gmail.com", {
     method: "POST",
     headers: {
@@ -48,14 +48,18 @@ function placeOrder() {
     body: JSON.stringify(data)
   });
 
-  // 📊 GOOGLE SHEET
-  fetch("YOUR_GOOGLE_SCRIPT_URL", {
+  // 📊 GOOGLE SHEET SAVE
+  fetch("https://script.google.com/macros/s/AKfycbx9suZTdndyUtw_mQKyom1P0gbk-NoVelIliqtvTdYVBNh0jxgBr3UbUKREpBsomeWQ/exec", {
     method: "POST",
     body: JSON.stringify(data)
   });
 
-  alert("✅ Order সফল হয়েছে!");
+  // ✅ SUCCESS MESSAGE
+  alert("🎉 অর্ডার সফল হয়েছে!\nআমরা দ্রুত যোগাযোগ করবো।");
 
+  // CLEAR CART
   localStorage.removeItem("cart");
+
+  // REDIRECT
   window.location.href = "index.html";
 }
