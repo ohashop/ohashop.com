@@ -4,16 +4,28 @@ function loadCart() {
   let html = "";
   let subtotal = 0;
 
-  cart.forEach(p => {
+  cart.forEach((p, index) => {
     subtotal += p.price;
 
-    html += `<div>${p.name} - ৳${p.price}</div>`;
+    html += `
+      <div class="border p-2 mb-2">
+        ${p.name} - ৳${p.price}
+        <button onclick="removeItem(${index})" class="btn btn-sm btn-danger float-end">X</button>
+      </div>
+    `;
   });
 
   document.getElementById("cartItems").innerHTML = html;
   document.getElementById("subtotal").innerText = subtotal;
 
   calculateTotal();
+}
+
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
 }
 
 function calculateTotal() {
@@ -25,11 +37,5 @@ function calculateTotal() {
 }
 
 document.getElementById("location").addEventListener("change", calculateTotal);
-
-function placeOrder() {
-  alert("Order Placed ✅");
-  localStorage.removeItem("cart");
-  location.reload();
-}
 
 loadCart();
